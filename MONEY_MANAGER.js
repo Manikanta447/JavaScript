@@ -65,7 +65,7 @@ class MoneyManager extends Component {
     let result
 
     if (transactionsList.length === 0) {
-      result = <MoneyDetails obj={tempObj} />  //MONEY DETAILS COMPONENT AT 149LINE
+      result = <MoneyDetails obj={tempObj} />
     } else {
       result = transactionsList.map(eachTrans => (
         <MoneyDetails obj={eachTrans} key={eachTrans.transactionId} />
@@ -135,6 +135,16 @@ class MoneyManager extends Component {
 
           <div className="history">
             <h1 className="tra-heading">History</h1>
+            <ul className="list-container">
+              <li className="list-item">
+                <p className="column-names">Title</p>
+                <p className="column-names">Amount</p>
+                <p className="column-names">Type</p>
+              </li>
+              {transactionsList.map(eachObj => (
+                <TransactionItem obj={eachObj} key={eachObj.transactionId} />
+              ))}
+            </ul>
           </div>
         </div>
       </div>
@@ -143,8 +153,6 @@ class MoneyManager extends Component {
 }
 
 export default MoneyManager
-
-
 
 //MONEY DETAILS COMPONENT
 import './index.css'
@@ -226,3 +234,23 @@ const MoneyDetails = props => {
 }
 
 export default MoneyDetails
+
+//TransactionItem Component
+// Write your code here
+import './index.css'
+
+const TransactionItem = props => {
+  const {obj} = props
+  const {transactionId, title, amount, type} = obj
+
+  return (
+    <li className="trans-list-item">
+      <p className="trans-text">{title}</p>
+      <p className="trans-text">{amount}</p>
+      <p className="trans-text">{type}</p>
+    </li>
+  )
+}
+
+export default TransactionItem
+
