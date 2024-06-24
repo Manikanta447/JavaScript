@@ -55,7 +55,7 @@ class EmojiGame extends Component {
 
   restart = () => {
     refList = []
-    this.setState({winOrLoseStatus: false})
+    this.setState({winOrLoseStatus: false, score: 0})
   }
 
   render() {
